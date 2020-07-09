@@ -49,7 +49,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		
         return map -> {
             String id = (String) map.get("sub");
-            //soit l'utilisateur se trouve dans la base de données, soit il est créé et ajouté dans la base de donné au moment d'authentification
+            //soit l'utilisateur se trouve dans la base de donnÃ©es, soit il est crÃ©Ã© et ajoutÃ© dans la base de donnÃ© au moment d'authentification
             WantedUser user = userDetailsRepo.findById(id).orElseGet(() -> {
             	WantedUser newUser = new  WantedUser();
                 newUser.setId(id);
@@ -59,9 +59,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 
                 return newUser;
             });
-            if(id.equals("114287024655203647424")) {
-                	user.setRole(UserRole.ADMIN);
-            }
             return userDetailsRepo.save(user);
         };
         
